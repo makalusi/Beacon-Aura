@@ -1,0 +1,677 @@
+<html lang="en" class="antialiased"><head><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Beacon - Charity Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Oswald:wght@500;600&amp;display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1 { font-family: 'Oswald', sans-serif; }
+    
+    /* Image carousel animation */
+    .hero-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        animation: fadeInOut 20s infinite;
+    }
+    
+    .hero-image:nth-child(1) {
+        animation-delay: 0s;
+    }
+    
+    .hero-image:nth-child(2) {
+        animation-delay: 4s;
+    }
+    
+    .hero-image:nth-child(3) {
+        animation-delay: 8s;
+    }
+    
+    .hero-image:nth-child(4) {
+        animation-delay: 12s;
+    }
+    
+    .hero-image:nth-child(5) {
+        animation-delay: 16s;
+    }
+    
+    @keyframes fadeInOut {
+        0%, 100% {
+            opacity: 0;
+        }
+        8%, 18% {
+            opacity: 1;
+        }
+        20% {
+            opacity: 0;
+        }
+    }
+    
+    /* Loading animations */
+    .load-nav {
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    }
+    
+    .load-badge {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    }
+    
+    .load-heading {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease-out 0.6s forwards;
+    }
+    
+    .load-text {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease-out 0.8s forwards;
+    }
+    
+    .load-buttons {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease-out 1s forwards;
+    }
+    
+    .load-stats {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease-out 1.2s forwards;
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Scroll Animation Styles */
+    .scroll-animate {
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .scroll-animate.animate {
+        opacity: 1;
+    }
+    
+    /* Card animations */
+    .scroll-card-1 {
+        transform: translateX(-50px) translateY(30px) scale(0.95);
+    }
+    
+    .scroll-card-1.animate {
+        transform: translateX(0) translateY(0) scale(1);
+    }
+    
+    .scroll-card-2 {
+        transform: translateY(50px) scale(0.95);
+    }
+    
+    .scroll-card-2.animate {
+        transform: translateY(0) scale(1);
+    }
+    
+    .scroll-card-3 {
+        transform: translateX(50px) translateY(30px) scale(0.95);
+    }
+    
+    .scroll-card-3.animate {
+        transform: translateX(0) translateY(0) scale(1);
+    }
+    
+    /* Partners section */
+    .scroll-partners-title {
+        transform: translateY(20px);
+    }
+    
+    .scroll-partners-title.animate {
+        transform: translateY(0);
+    }
+    
+    .scroll-logo {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .scroll-logo.animate {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    
+    /* Image grid animations */
+    .scroll-image-left {
+        transform: translateX(-40px) translateY(40px);
+        opacity: 0;
+    }
+    
+    .scroll-image-left.animate {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    
+    .scroll-image-right {
+        transform: translateX(40px) translateY(40px);
+        opacity: 0;
+    }
+    
+    .scroll-image-right.animate {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    
+    .scroll-testimonial {
+        transform: translateY(30px) scale(0.98);
+        opacity: 0;
+    }
+    
+    .scroll-testimonial.animate {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    
+    /* Text content animations */
+    .scroll-text-badge {
+        transform: translateX(-20px) scale(0.9);
+        opacity: 0;
+    }
+    
+    .scroll-text-badge.animate {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+    
+    .scroll-text-heading {
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    
+    .scroll-text-heading.animate {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    .scroll-text-description {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    
+    .scroll-text-description.animate {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+    .scroll-progress-container {
+        opacity: 0;
+    }
+    
+    .scroll-progress-container.animate {
+        opacity: 1;
+    }
+    
+    .scroll-progress-bar {
+        width: 0 !important;
+        transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+    }
+    
+    .scroll-progress-container.animate .scroll-progress-bar {
+        width: var(--progress-width, 0) !important;
+    }
+    
+    .scroll-button {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    
+    .scroll-button.animate {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    </style>
+    
+    <style id="aura-editor-visibility-style">
+              .invisible { visibility: hidden !important; }
+            </style>
+            
+            
+            
+            <link id="all-fonts-link-font-montserrat" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-montserrat">.font-montserrat { font-family: 'Montserrat', sans-serif !important; }</style><link id="all-fonts-link-font-geist" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist">.font-geist { font-family: 'Geist', sans-serif !important; }</style><link id="all-fonts-link-font-roboto" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-roboto">.font-roboto { font-family: 'Roboto', sans-serif !important; }</style><link id="all-fonts-link-font-poppins" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-poppins">.font-poppins { font-family: 'Poppins', sans-serif !important; }</style><link id="all-fonts-link-font-playfair" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&amp;display=swap"><style id="all-fonts-style-font-playfair">.font-playfair { font-family: 'Playfair Display', serif !important; }</style><link id="all-fonts-link-font-instrument-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-instrument-serif">.font-instrument-serif { font-family: 'Instrument Serif', serif !important; }</style><link id="all-fonts-link-font-merriweather" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&amp;display=swap"><style id="all-fonts-style-font-merriweather">.font-merriweather { font-family: 'Merriweather', serif !important; }</style><link id="all-fonts-link-font-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-bricolage">.font-bricolage { font-family: 'Bricolage Grotesque', sans-serif !important; }</style><link id="all-fonts-link-font-jakarta" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-jakarta">.font-jakarta { font-family: 'Plus Jakarta Sans', sans-serif !important; }</style><link id="all-fonts-link-font-manrope" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-manrope">.font-manrope { font-family: 'Manrope', sans-serif !important; }</style><link id="all-fonts-link-font-space-grotesk" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-space-grotesk">.font-space-grotesk { font-family: 'Space Grotesk', sans-serif !important; }</style><link id="all-fonts-link-font-work-sans" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-work-sans">.font-work-sans { font-family: 'Work Sans', sans-serif !important; }</style><link id="all-fonts-link-font-pt-serif" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-pt-serif">.font-pt-serif { font-family: 'PT Serif', serif !important; }</style><link id="all-fonts-link-font-geist-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-geist-mono">.font-geist-mono { font-family: 'Geist Mono', monospace !important; }</style><link id="all-fonts-link-font-space-mono" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap"><style id="all-fonts-style-font-space-mono">.font-space-mono { font-family: 'Space Mono', monospace !important; }</style><link id="all-fonts-link-font-quicksand" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap"><style id="all-fonts-style-font-quicksand">.font-quicksand { font-family: 'Quicksand', sans-serif !important; }</style><link id="all-fonts-link-font-nunito" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&amp;display=swap"><style id="all-fonts-style-font-nunito">.font-nunito { font-family: 'Nunito', sans-serif !important; }</style></head>
+    <body class="bg-black text-white min-h-screen flex flex-col overflow-x-hidden selection:bg-amber-500/30 selection:text-amber-200">
+    
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full z-50 flex items-center justify-between px-6 py-6 md:px-10 load-nav">
+            <!-- Logo -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <div class="relative flex items-center justify-center">
+                    <img src="image/beacon logo svg22-01.svg" alt="The Beacon Logo" class="w-12 h-12">
+                    <!-- Glow effect behind logo -->
+                    <div class="absolute inset-0 bg-amber-500 blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                </div>
+                
+            </div>
+    
+            <!-- Glass Nav Menu -->
+            <div class="hidden md:flex items-center gap-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl p-1.5 pl-6 pr-1.5 shadow-2xl shadow-black/80">
+                <div class="flex gap-8 mr-6">
+                    <a href="#" class="text-sm text-white font-medium hover:text-amber-400 transition-colors" style="">Home</a>
+                    <a href="#" class="text-sm text-zinc-400 font-medium hover:text-white transition-colors" style="">About us</a>
+                    <a href="#" class="text-sm text-zinc-400 font-medium hover:text-white transition-colors" style="">Gallery</a>
+                    <a href="#" class="text-sm text-zinc-400 font-medium hover:text-white transition-colors" style="">Projects</a>
+                    <a href="#" class="text-sm text-zinc-400 font-medium hover:text-white transition-colors" style="">Contact</a>
+                </div>
+            </div>
+    
+            <!-- Right Action -->
+            <div class="flex items-center gap-4">
+                <button class="hidden md:flex items-center gap-2 bg-gradient-to-b from-amber-400 to-amber-500 text-black px-6 py-2.5 rounded-full text-sm font-semibold hover:brightness-110 transition-all shadow-[0_0_20px_-5px_rgba(245,158,11,0.4)] border-t border-white/20" style="">
+                    Donate Now
+                </button>
+                <!-- Mobile Menu Toggle -->
+                <button class="md:hidden p-2 text-white/80 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="menu" class="lucide lucide-menu w-6 h-6 stroke-[1.5]"><path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+    
+        <!-- Hero Section -->
+        <main class="relative flex-grow flex items-center min-h-screen pt-24 md:pt-0">
+            
+            <!-- Background Image Area -->
+            <div class="absolute inset-0 z-0 flex justify-end">
+                <!-- Animated Image Carousel -->
+                <div class="w-full md:w-[65%] h-full relative hero-image-container">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/bb2f062f-6090-45f2-a390-4a1294b83c80_800w.png" alt="Child surrounded by hands" class="hero-image w-full h-full object-cover grayscale brightness-[0.8]">
+                    <img src="image/new new beacon 2.png" alt="Beacon image 2" class="hero-image w-full h-full object-cover grayscale brightness-[0.8]">
+                    <img src="image/new new beacon 3.png" alt="Beacon image 3" class="hero-image w-full h-full object-cover grayscale brightness-[0.8]">
+                    <img src="image/new new beacon 44.png" alt="Beacon image 44" class="hero-image w-full h-full object-cover grayscale brightness-[0.8]">
+                    <img src="image/new new beacon 5.png" alt="Beacon image 5" class="hero-image w-full h-full object-cover grayscale brightness-[0.8]">
+                    
+                    <!-- Complex Gradient Masks for smooth blending -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent md:via-black/40"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute left-0 top-0 h-full w-32 bg-gradient-to-r from-black to-transparent"></div>
+                </div>
+            </div>
+    
+            <!-- Content Container -->
+            <div class="container md:px-10 z-10 grid grid-cols-1 md:grid-cols-12 h-full mr-auto ml-auto pr-6 pl-6 relative items-center">
+                
+                <div class="col-span-1 md:col-span-7 flex flex-col justify-center gap-8">
+                    
+                    <!-- Badge -->
+                    <div class="flex items-center gap-3 load-badge">
+                        <span class="h-px w-6 bg-amber-500"></span>
+                        <span class="text-lg text-zinc-300 tracking-wide font-medium" style="">Non - Profit Charity</span>
+                    </div>
+    
+                    <!-- Main Heading -->
+                    <h1 class="text-6xl sm:text-7xl lg:text-[5.5rem] uppercase leading-[0.85] tracking-tight text-white drop-shadow-2xl font-montserrat font-bold load-heading" style="">
+                        Give <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500 font-montserrat font-bold" style="">Hope</span>
+                        To Children
+                        In Need
+                    </h1>
+    
+                    <!-- Supporting Text (Added Detail) -->
+                    <p class="text-xl text-zinc-400 max-w-lg leading-relaxed font-light load-text" style="">
+                        Every child deserves a future filled with possibility. We provide essential education, healthcare, and shelter to those who need it most.
+                    </p>
+    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2 load-buttons">
+                        <button class="group relative px-8 py-4 bg-amber-500 hover:bg-amber-400 text-black rounded-xl font-semibold text-base transition-all shadow-[0_0_40px_-10px_rgba(245,158,11,0.5)] overflow-hidden">
+                            <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                            <span class="relative flex items-center gap-2" style="">
+                                Donate Now
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4 stroke-[2]"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                            </span>
+                        </button>
+    
+                        <button class="px-8 py-4 rounded-xl text-base font-medium text-white border border-amber-500/30 hover:bg-amber-500/10 hover:border-amber-500/60 transition-all flex items-center gap-3 backdrop-blur-sm group" style="">
+                            <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="play" class="lucide lucide-play w-3 h-3 fill-white stroke-none ml-0.5"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg>
+                            </div>
+                            Watch Video
+                        </button>
+                    </div>
+    
+                    <!-- Trust/Stats Section (Added Detail) -->
+                    <div class="mt-10 pt-8 border-t border-white/5 flex flex-wrap gap-8 md:gap-12 items-center load-stats">
+                        <!-- Stat 1 -->
+                        <div class="flex flex-col">
+                            <span class="text-3xl text-white tracking-tight font-montserrat font-bold" style="">120k+</span>
+                            <span class="text-sm text-zinc-500 uppercase tracking-wider font-medium" style="">Lives Impacted</span>
+                        </div>
+                        
+                        <!-- Divider -->
+                        <div class="h-10 w-px bg-white/10 hidden sm:block"></div>
+                        
+                        <!-- Stat 2 -->
+                        <div class="flex flex-col">
+                            <span class="text-3xl text-white tracking-tight font-montserrat font-bold" style="">$4.2M</span>
+                            <span class="text-sm text-zinc-500 uppercase tracking-wider font-medium" style="">Raised Funds</span>
+                        </div>
+    
+                        <!-- Divider -->
+                        <div class="h-10 w-px bg-white/10 hidden sm:block"></div>
+    
+                        <!-- Recent Donors -->
+                        <div class="flex items-center gap-3">
+                            <div class="flex -space-x-3">
+                                <img src="https://i.pravatar.cc/150?img=32" alt="Donor" class="w-10 h-10 rounded-full border-2 border-black grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all">
+                                <img src="https://i.pravatar.cc/150?img=12" alt="Donor" class="w-10 h-10 rounded-full border-2 border-black grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all">
+                                <img src="https://i.pravatar.cc/150?img=5" alt="Donor" class="w-10 h-10 rounded-full border-2 border-black grayscale opacity-70 hover:opacity-100 hover:grayscale-0 transition-all">
+                            </div>
+                            <span class="text-xs text-zinc-400 font-medium" style="">Join 5,000+donors this month</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Atmospheric Glows -->
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-amber-600/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+        </main>
+        
+                                                                                                                                                   
+        
+        
+                                                                                         <!--HERO-END-->
+                                                                                                                                                                                                                                                          
+                                                                <!-- NEW SECTION: Impact & Story -->
+                                                                <section id="impact-section" class="relative bg-black z-20 pb-32">
+                                                                    <!-- Subtle Gradient Separator -->
+                                                                    <div class="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-black to-transparent pointer-events-none z-10"></div>
+                                                            
+                                                                    <div class="container mx-auto px-6 md:px-10 relative z-20">
+                                                                        
+                                                                        <!-- 1. Feature Cards Grid -->
+                                                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 md:mb-32">
+                                                                            <!-- Card 1 -->
+                                                                            <div class="scroll-animate scroll-card-1 group relative h-[280px] rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/10 transition-colors">
+                                                                                <img src="image/children.jpg" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" alt="Nature">
+                                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                                                                                <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                                                                                    <div>
+                                                                                        <p class="text-amber-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Who We Are</p>
+                                                                                        <h3 class="text-white text-2xl font-medium font-['Oswald'] tracking-wide">Companies House</h3>
+                                                                                    </div>
+                                                                                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black group-hover:bg-amber-500 transition-all duration-300">
+                                                                                        <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[1.5]"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                            
+                                                                            <!-- Card 2 -->
+                                                                            <div class="scroll-animate scroll-card-2 group relative h-[280px] rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/10 transition-colors">
+                                                                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" alt="Volunteer">
+                                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                                                                                <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                                                                                    <div>
+                                                                                        <p class="text-amber-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Volunteer</p>
+                                                                                        <h3 class="text-white text-2xl font-medium font-['Oswald'] tracking-wide">Take Action</h3>
+                                                                                    </div>
+                                                                                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black group-hover:bg-amber-500 transition-all duration-300">
+                                                                                        <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[1.5]"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                                      
+                                                                            <!-- Card 3 -->
+                                                                            <div class="scroll-animate scroll-card-3 group relative h-[280px] rounded-3xl overflow-hidden cursor-pointer border border-white/5 hover:border-white/10 transition-colors">
+                                                                                <img src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?q=80&amp;w=1000&amp;auto=format&amp;fit=crop" class="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" alt="Africa">
+                                                                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                                                                                <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                                                                                    <div>
+                                                                                        <p class="text-amber-500 text-[10px] font-bold tracking-[0.2em] uppercase mb-2">Stories</p>
+                                                                                        <h3 class="text-white text-2xl font-medium font-['Oswald'] tracking-wide leading-tight">Building A Future<br>In Africa</h3>
+                                                                                    </div>
+                                                                                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black group-hover:bg-amber-500 transition-all duration-300">
+                                                                                        <i data-lucide="arrow-up-right" class="w-5 h-5 stroke-[1.5]"></i>   
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                      
+                                                                        <!-- 2. Partners / Logos -->
+                                                                        <div class="flex flex-col items-center mb-32">
+                                                                            <span class="scroll-animate scroll-partners-title text-amber-500/60 text-[10px] font-bold tracking-[0.25em] uppercase mb-12 border-b border-amber-500/20 pb-4">Non-Profit Charity</span>
+                                                                            <div class="w-full flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500">
+                                                                                <!-- Logo 1: Unity -->
+                                                                                <div class="scroll-logo flex flex-col items-center gap-1 group">
+                                                                                    <i data-lucide="users" class="w-8 h-8 stroke-1 mb-1"></i>
+                                                                                    <span class="text-xs tracking-[0.2em] font-semibold">UNITY</span>
+                                                                                </div>
+                                                                                <!-- Logo 2: Art Academy -->
+                                                                                <div class="scroll-logo flex items-center gap-2 font-serif italic text-xl font-bold">
+                                                                                    <span class="not-italic font-sans font-black text-2xl">ART.</span>academy
+                                                                                </div>
+                                                                                <!-- Logo 3: World Blood -->
+                                                                                <div class="scroll-logo flex flex-col items-center leading-none">
+                                                                                    <div class="flex items-center gap-1 font-black text-lg tracking-tighter">
+                                                                                        WORLD <i data-lucide="droplet" class="w-4 h-4 fill-current"></i>
+                                                                                    </div>
+                                                                                    <span class="text-[8px] tracking-widest">BLOOD DONOR DAY</span>
+                                                                                </div>
+                                                                                <!-- Logo 4: Sweethome -->
+                                                                                <div class="scroll-logo flex flex-col items-center gap-1">
+                                                                                    <i data-lucide="home" class="w-7 h-7 stroke-[1.5]"></i>
+                                                                                    <span class="text-[10px] tracking-[0.2em] font-bold">SWEETHOME</span>
+                                                                                </div>
+                                                                                <!-- Logo 5: Goodie Giving -->
+                                                                                <div class="scroll-logo flex items-center gap-2">
+                                                                                    <i data-lucide="heart-handshake" class="w-8 h-8 stroke-1"></i>
+                                                                                    <div class="flex flex-col text-[9px] font-bold tracking-wider uppercase leading-tight">
+                                                                                        <span>Goodie</span>
+                                                                                        <span>Giving</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- Logo 6: Findr -->
+                                                                                <div class="scroll-logo flex items-center gap-2 text-xl font-bold tracking-tight">
+                                                                                    <div class="w-2 h-2 bg-current rounded-sm rotate-45"></div>
+                                                                                    Findr
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                            
+                                                                        <!-- 3. About Content Split -->
+                                                                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                                                                            
+                                                                            <!-- Left: Image Grid -->
+                                                                            <div class="grid grid-cols-2 gap-4 md:gap-6">
+                                                                                <div class="flex flex-col gap-4 md:gap-6 lg:mt-12">
+                                                                                    <!-- Drinking Water -->
+                                                                                    <div class="scroll-animate scroll-image-left rounded-3xl overflow-hidden h-48 md:h-56 border border-white/5 relative group">
+                                                                                        <img src="image/watter.jpg" alt="Drinking Water" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                                                                        <div class="absolute inset-0 bg-black/20"></div>
+                                                                                    </div>
+                                                                                    <!-- Testimonial Card -->
+                                                                                    <div class="scroll-animate scroll-testimonial bg-zinc-900/50 border border-white/5 p-6 rounded-3xl backdrop-blur-sm flex flex-col justify-between flex-grow">
+                                                                                        <div class="mb-4">
+                                                                                            <i data-lucide="quote" class="w-6 h-6 text-amber-500/50 fill-amber-500/20 rotate-180 mb-2"></i>
+                                                                                            <p class="text-zinc-400 text-sm leading-relaxed italic">
+                                                                                                "This place is awesome and huge! Michael was super cool and very pleasant. If you want someone to deliver the sound to your project."
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="flex items-center gap-3 pt-4 border-t border-white/5">
+                                                                                            <div class="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 font-bold text-xs border border-amber-500/30">HM</div>
+                                                                                            <div>
+                                                                                                <p class="text-white text-sm font-medium tracking-wide">Huyre Merry</p>
+                                                                                                <p class="text-zinc-600 text-xs font-medium">Designer</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                
+                                                                                <!-- Right Portrait -->
+                                                                                <div class="scroll-animate scroll-image-right rounded-3xl overflow-hidden h-[450px] md:h-[500px] border border-white/5 relative group">
+                                                                                    <img src="image/MANY CHILDREN.jpg" alt="School Boy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                                                                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                                                                </div>
+                                                                            </div>
+                                                            
+                                                                            <!-- Right: Text Content -->
+                                                                            <div class="pl-0 lg:pl-10 space-y-10">
+                                                                                <div class="space-y-6">
+                                                                                    <span class="scroll-animate scroll-text-badge text-amber-500 text-xs font-semibold tracking-[0.2em] uppercase inline-block border border-amber-500/20 px-3 py-1 rounded-full bg-amber-500/5">Gift of $36</span>
+                                                                                    
+                                                                                    <h2 class="scroll-animate scroll-text-heading text-5xl md:text-6xl font-['Oswald'] text-white uppercase leading-[0.9] tracking-tight">
+                                                                                        Helping Others <br>
+                                                                                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 to-zinc-500">Improves World</span>
+                                                                                    </h2>
+                                                                                    
+                                                                                    <p class="scroll-animate scroll-text-description text-zinc-400 text-lg font-light leading-relaxed">
+                                                                                        Ensures that kids living in poverty have access to life-changing benefits like medical care, educational support, life skills and job-training before they graduate.
+                                                                                    </p>
+                                                                                </div>
+                                                                                
+                                                                                <!-- Progress Bars -->
+                                                                                <div class="scroll-animate scroll-progress-container space-y-8">
+                                                                                    <div class="group">
+                                                                                        <div class="flex justify-between text-sm font-medium text-zinc-300 mb-3">
+                                                                                            <span class="tracking-wide">Save Water</span>
+                                                                                            <span class="text-amber-500">59%</span>
+                                                                                        </div>
+                                                                                        <div class="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                                                                                            <div class="scroll-progress-bar h-full bg-amber-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)] group-hover:w-[65%] transition-all duration-1000 ease-out" style="--progress-width: 59%;"></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="group">
+                                                                                        <div class="flex justify-between text-sm font-medium text-zinc-300 mb-3">
+                                                                                            <span class="tracking-wide">Education</span>
+                                                                                            <span class="text-amber-500">98%</span>
+                                                                                        </div>
+                                                                                        <div class="h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                                                                                            <div class="scroll-progress-bar h-full bg-amber-500 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]" style="--progress-width: 98%;"></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            
+                                                                                <div class="pt-2">
+                                                                                    <button class="scroll-animate scroll-button rounded-full border border-zinc-700 text-zinc-300 px-10 py-3.5 text-xs font-semibold hover:bg-white hover:text-black hover:border-white transition-all uppercase tracking-[0.15em]">
+                                                                                        About Us
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                            
+                                                                    </div>
+                                                                </section>
+                                                            
+                                                                
+                                                            
+                                                                                                          <!--SECOND-END-->
+    
+        <script>
+            lucide.createIcons();
+            
+            // Scroll Animation Handler
+            document.addEventListener('DOMContentLoaded', function() {
+                const section = document.getElementById('impact-section');
+                if (!section) return;
+                
+                // Create Intersection Observer
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px 0px -100px 0px',
+                    threshold: 0.1
+                };
+                
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Animate cards with stagger
+                            const cards = entry.target.querySelectorAll('.scroll-card-1, .scroll-card-2, .scroll-card-3');
+                            cards.forEach((card, index) => {
+                                setTimeout(() => {
+                                    card.classList.add('animate');
+                                }, index * 150);
+                            });
+                            
+                            // Animate partners title
+                            const partnersTitle = entry.target.querySelector('.scroll-partners-title');
+                            if (partnersTitle) {
+                                setTimeout(() => {
+                                    partnersTitle.classList.add('animate');
+                                }, 500);
+                            }
+                            
+                            // Animate logos with stagger
+                            const logos = entry.target.querySelectorAll('.scroll-logo');
+                            logos.forEach((logo, index) => {
+                                setTimeout(() => {
+                                    logo.classList.add('animate');
+                                }, 700 + (index * 100));
+                            });
+                            
+                            // Animate image grid
+                            const imageLeft = entry.target.querySelector('.scroll-image-left');
+                            const imageRight = entry.target.querySelector('.scroll-image-right');
+                            const testimonial = entry.target.querySelector('.scroll-testimonial');
+                            
+                            if (imageLeft) {
+                                setTimeout(() => imageLeft.classList.add('animate'), 300);
+                            }
+                            if (testimonial) {
+                                setTimeout(() => testimonial.classList.add('animate'), 500);
+                            }
+                            if (imageRight) {
+                                setTimeout(() => imageRight.classList.add('animate'), 400);
+                            }
+                            
+                            // Animate text content
+                            const textBadge = entry.target.querySelector('.scroll-text-badge');
+                            const textHeading = entry.target.querySelector('.scroll-text-heading');
+                            const textDescription = entry.target.querySelector('.scroll-text-description');
+                            const progressContainer = entry.target.querySelector('.scroll-progress-container');
+                            const button = entry.target.querySelector('.scroll-button');
+                            
+                            if (textBadge) {
+                                setTimeout(() => textBadge.classList.add('animate'), 600);
+                            }
+                            if (textHeading) {
+                                setTimeout(() => textHeading.classList.add('animate'), 800);
+                            }
+                            if (textDescription) {
+                                setTimeout(() => textDescription.classList.add('animate'), 1000);
+                            }
+                            if (progressContainer) {
+                                setTimeout(() => {
+                                    progressContainer.classList.add('animate');
+                                }, 1200);
+                            }
+                            if (button) {
+                                setTimeout(() => button.classList.add('animate'), 1400);
+                            }
+                            
+                            // Unobserve after animation
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+                
+                // Start observing
+                observer.observe(section);
+            });
+        </script>
+    
+    </body></html>
+    
